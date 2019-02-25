@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 	char pw[256] = "A";
 	int pwLen = 1;
 
+	// note: strcmp returns 0 if equal, thats why logically the while loop below still works
 	while (strcmp(hash, crypt(pw, salt)))
 	{
 		strcpy(pw, generatePw(pw, &pwLen, pwLen - 1));
