@@ -14,5 +14,7 @@
 * Credit - Implementation of Luhn's algorithm was fine but the other validation checks (checking of number of digits, first digits, etc) was quite sloppily coded by me. You can just compare the whole credit card number directly to check what type of CC it is, instead of isolating individual digits to check them.
 3. Problem Set 2
 * Crack - If you plan on compiling it locally, make sure you have the compilation flags '-lcrypt' for your linker to include the code needed for crypt() to run. My solution uses pointers as well as recursive functions which are only introduced in subsequent lectures, so that might be a bit confusing for you. Other than that, I think the code is pretty efficient and it can bruteforce DES hashes of any length (until it overflows of course).
+4. Problem Set 3
+* Resize (more comfortable) - I couldn't be bothered with some error checking of inputs but check50 doesn't check for malicious input anyway. (Yeah I think my code breaks if you enter a negative scale factor, dunno haven't tried) But yes, the code resizes correctly for all positive scale factors. (0.0, infinity)
 
 Have fun coding! Do let me know if you have any questions regarding my code.

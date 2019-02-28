@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 
 	// reading user input
-	unsigned char pt[256];
+	char pt[256];
 	char line[256];
 	fgets(line, sizeof(line), stdin);
 	sscanf(line, "%[^\n]", pt);	
