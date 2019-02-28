@@ -9,7 +9,7 @@ void print_newl(void);
 int main(void)
 {
     int height = get_height();
-    
+
     for (int i = 1; i <= height; i++)
     {
         print_whitespace(height - i);

@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 
     // ensure infile is (likely) a 24-bit uncompressed BMP 4.0
     if (bf.bfType != 0x4d42 || bf.bfOffBits != 54 || bi.biSize != 40 ||
-        bi.biBitCount != 24 || bi.biCompression != 0)
+            bi.biBitCount != 24 || bi.biCompression != 0)
     {
         fclose(outptr);
         fclose(inptr);
@@ -59,10 +59,10 @@ int main(int argc, char *argv[])
     RGBTRIPLE **oldBmp = malloc(abs(bi.biHeight) * sizeof(RGBTRIPLE*));
     if (oldBmp)
     {
-	    for (int i = 0, n = abs(bi.biHeight); i < n; i++)
-	    {
-		    oldBmp[i] = malloc(sizeof(RGBTRIPLE) * bi.biWidth);
-	    }
+        for (int i = 0, n = abs(bi.biHeight); i < n; i++)
+        {
+            oldBmp[i] = malloc(sizeof(RGBTRIPLE) * bi.biWidth);
+        }
     }
 
     // determine padding for infile scanlines
@@ -96,10 +96,10 @@ int main(int argc, char *argv[])
     bi.biSizeImage = newHeight * (newWidth * sizeof(RGBTRIPLE) + padding);
     // documentation is confusing but biSize is actually just sizeof(BITMAPINFOHEADER)
     // i.e. in this case its a fixed value of 40 bytes
- 
+
     // need to calculate and change bfSize (total size of file) in bf
     bf.bfSize = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + bi.biSizeImage;
-    
+
     // write outfile's BITMAPFILEHEADER
     fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
 
@@ -111,18 +111,18 @@ int main(int argc, char *argv[])
         // iterate over pixels in scanline
         for (int j = 1; j <= bi.biWidth; j++)
         {
-		// note that you need to cast the ints to float for division
-		int col = ceil((float)i / (float)newHeight * (float)oldHeight);
-		int row = ceil((float)j / (float)newWidth * (float)oldWidth);
-                // write RGB triple to outfile
-		// when accessing oldBmp indices, care to decrement by 1 as the array is indexed from 0
-		// for the above col and row calculation, we cannot do the arithmetic starting from 0
-		// or the resizing math will not work out. e.g. 1/3 != 0/2
-		// hence, we must start counting with actual counting numbers
-                fwrite(&(oldBmp[col - 1][row - 1]), sizeof(RGBTRIPLE), 1, outptr);
+            // note that you need to cast the ints to float for division
+            int col = ceil((float)i / (float)newHeight * (float)oldHeight);
+            int row = ceil((float)j / (float)newWidth * (float)oldWidth);
+            // write RGB triple to outfile
+            // when accessing oldBmp indices, care to decrement by 1 as the array is indexed from 0
+            // for the above col and row calculation, we cannot do the arithmetic starting from 0
+            // or the resizing math will not work out. e.g. 1/3 != 0/2
+            // hence, we must start counting with actual counting numbers
+            fwrite(&(oldBmp[col - 1][row - 1]), sizeof(RGBTRIPLE), 1, outptr);
         }
 
-	// add padding
+        // add padding
         for (int k = 0; k < padding; k++)
         {
             fputc(0x00, outptr);
@@ -132,7 +132,7 @@ int main(int argc, char *argv[])
     // free oldBmp
     for (int i = 0; i < oldHeight; i++)
     {
-	    free(oldBmp[i]);
+        free(oldBmp[i]);
     }
     free(oldBmp);
 

@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
 
     // ensure infile is (likely) a 24-bit uncompressed BMP 4.0
     if (bf.bfType != 0x4d42 || bf.bfOffBits != 54 || bi.biSize != 40 ||
-        bi.biBitCount != 24 || bi.biCompression != 0)
+            bi.biBitCount != 24 || bi.biCompression != 0)
     {
         fclose(outptr);
         fclose(inptr);
@@ -71,13 +71,13 @@ int main(int argc, char *argv[])
             // temporary storage
             RGBTRIPLE triple;
 
-	    fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
+            fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
 
-	    if (triple.rgbtRed == 0xFF)
-	    {
-		    triple.rgbtBlue = 0xFF;
-		    triple.rgbtGreen = 0xFF;
-	    }
+            if (triple.rgbtRed == 0xFF)
+            {
+                triple.rgbtBlue = 0xFF;
+                triple.rgbtGreen = 0xFF;
+            }
 
             // write RGB triple to outfile
             fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);

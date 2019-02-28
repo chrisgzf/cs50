@@ -10,17 +10,17 @@ int main(void) {
     long cc = get_cc();
     int digits = get_total_digits(cc);
     int checksum = 0;
-    
+
     for (int i = 1; i < digits; i+=2)
     {
         checksum += sum_digits(get_digit(cc, i) * 2);
     }
-    
+
     for (int i = 0; i < digits; i+=2)
     {
         checksum += get_digit(cc, i);
     }
-    
+
     if (checksum % 10 == 0)
     {
         if (get_digit(cc, digits - 1) == 5 && (get_digit(cc, digits - 2) > 0 && get_digit(cc, digits - 2) < 6) && digits == 16)
