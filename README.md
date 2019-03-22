@@ -19,6 +19,6 @@
 5. Problem Set 4
 * I faced a problem with working on the pset on my local Linux machine. The Makefile provided by CS50 does not include "dictionary.h" as a dependency so it doesn't rebuild when you call `make`, even if you have made changes to the source file. If you face the same problem (you won't face this problem if you are using the online CS50 IDE), you can just clone my Makefile in the pset4 folders.
 * I managed to get 25th place in the [speller big board challenge](https://speller.cs50.net/cs50/2019/x/challenges/speller/#user/chrisgzf)! The code that I used to achieve that is unfortunately, not here. Go try the challenge!
-![Big Board Challenge Results](https://github.com/chrisgzf/cs50/tree/master/pset4/speller/25th_place.png "25th Place!")
+![Big Board Challenge Results](https://raw.githubusercontent.com/chrisgzf/cs50/master/pset4/25th_place.png "25th Place!")
 
 Have fun coding! Do let me know if you have any questions regarding my code.
